@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>THE BOYZ</title>
+    <link rel="stylesheet" type="text/css" href="./clothing.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.product-item a').click(function(e) {
+                e.preventDefault();
+                var category = $(this).data('category');
+                openOptions(category);
+            });
+
+            $(document).click(function(e) {
+                if (!$(e.target).closest('.product-item').length) {
+                    closeOptions();
+                }
+            });
+
+            function openOptions(category) {
+                var optionsContainer = $('.product-item a[data-category="' + category + '"]').siblings('.options-container');
+                optionsContainer.empty();
+
+                var options = {
+                    myntra: {
+                        url: 'https://www.myntra.com/search?query=' + category,
+                        label: 'Myntra'
+                    },
+                    amazon: {
+                        url: 'https://www.amazon.in/s?k=' + category,
+                        label: 'Amazon'
+                    },
+                    flipkart: {
+                        url: 'https://www.flipkart.com/search?q=' + category,
+                        label: 'Flipkart'
+                    }
+                };
+
+                for (var key in options) {
+                    var option = options[key];
+                    var link = $('<a>')
+                        .attr('href', option.url)
+                        .attr('target', '_blank')
+                        .appendTo(optionsContainer);
+
+                    $('<img>')
+                        .attr('src', './icons/' + key + '.png')
+                        .appendTo(link);
+
+                    $('<p>')
+                        .text(option.label)
+                        .appendTo(link);
+                }
+
+                optionsContainer.fadeIn();
+            }
+
+            function closeOptions() {
+                $('.options-container').fadeOut();
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1></h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../Index.html">Home</a></li>
+            <li><a href="../Cloths/clothing.html">Clothing</a></li>
+            <li><a href="../Shoes/shoes.html">Shoes</a></li>
+            <li><a href="../Assessories/accessories.html">Accessories</a></li>
+            
+        </ul>
+    </nav>
+    <br><br>
+    <section id="cloths">
+        <div class="product-list">
+            <div class="product-item">
+                <a href="#" data-category="tshirts">
+                    <img src="../Cloths/MEDIA/tshirt-main.jpg" alt="#">
+                </a>
+                <p>T-Shirts</p>
+                <div class="options-container"></div>
+            </div>
+            <div class="product-item">
+                <a href="#" data-category="shirts">
+                    <img src="../Cloths/MEDIA/shirt-main.jpg" alt="#">
+                </a>
+                <p>Shirts</p>
+                <div class="options-container"></div>
+            </div>
+            <div class="product-item">
+                <a href="#" data-category="jeans">
+                    <img src="../Cloths/MEDIA/jeans-main.jpg" alt="#">
+                </a>
+                <p>Jeans</p>
+                <div class="options-container"></div>
+            </div>
+            <div class="product-item">
+                <a href="#" data-category="joggers">
+                    <img src="../Cloths/MEDIA/jogger-main.jpg" alt="#">
+                </a>
+                <p>Joggers</p>
+                <div class="options-container"></div>
+            </div>
+            <div class="product-item">
+                <a href="#" data-category="pajamas">
+                    <img src="../Cloths/MEDIA/pajamas-main.jpg" alt="#">
+                </a>
+                <p>Pajamas</p>
+                <div class="options-container"></div>
+            </div>
+            <div class="product-item">
+                <a href="#" data-category="jackets">
+                    <img src="../Cloths/MEDIA/jacket.jpg" alt="#">
+                </a>
+                <p>Jackets</p>
+                <div class="options-container"></div>
+            </div>
+            <div class="product-item">
+                <a href="#" data-category="shorts">
+                    <img src="../Cloths/MEDIA/shorts.jpeg" alt="#">
+                </a>
+                <p>Shorts</p>
+                <div class="options-container"></div>
+            </div>
+            <div class="product-item">
+                <a href="#" data-category="hoodies">
+                    <img src="../Cloths/MEDIA/hoddies.jpg" alt="#">
+                </a>
+                <p>Hoodies</p>
+                <div class="options-container"></div>
+            </div>
+            <div class="product-item">
+                <a href="#" data-category="kurtas">
+                    <img src="../Cloths/MEDIA/kurta-main.jpg" alt="#">
+                </a>
+                <p>Kurtas</p>
+                <div class="options-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 THE BOYZ</p>
+    </footer>
+    
+    <script src="./clothing.js"></script>
+</body>
+</html>
